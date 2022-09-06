@@ -14,12 +14,14 @@ namespace CQRS_Api.Features.Employees.Commands
         public int EmpId { get; set; }
         public string EmpName { get; set; }
         public int EmpAge { get; set; }
+        public int EmpSalary { get; set; }
 
         public UpdateEmployeeCommand(Employee employee)
         {
             this.EmpName = employee.EmpName;
             this.EmpAge = employee.EmpAge;
             this.EmpId = employee.EmpId;
+            this.EmpSalary = employee.EmpSalary;
         }
         public class UpdateEmployeeCommandHandler : IRequestHandler<UpdateEmployeeCommand, int>
         {
@@ -30,12 +32,12 @@ namespace CQRS_Api.Features.Employees.Commands
             }
             public async Task<int> Handle(UpdateEmployeeCommand request, CancellationToken cancellationToken)
             {
-                var employee = await _employeeService.GetEmployeeById(request.EmpId);
-                if (employee == null)
-                    return default;
+                var employee = new EmployeeCommandModel();
 
                 employee.EmpAge = request.EmpAge;
                 employee.EmpName = request.EmpName;
+                employee.EmpSalary = request.EmpSalary;
+                employee.EmpId = request.EmpId;
 
                 return await _employeeService.UpdateEmployee(employee);
             }

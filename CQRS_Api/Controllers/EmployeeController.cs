@@ -22,13 +22,13 @@ namespace CQRS_Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Employee>> GetEmployees()
+        public async Task<IEnumerable<EmployeeQueryModel>> GetEmployees()
         {
             return await _mediator.Send(new GetAllEmployeesQuery());
         }
 
         [HttpGet("{empId:int}")]
-        public async Task<Employee> GetEmployee(int empId)
+        public async Task<EmployeeQueryModel> GetEmployee(int empId)
         {
             return await _mediator.Send(new GetEmployeeByIdQuery(empId));
         }

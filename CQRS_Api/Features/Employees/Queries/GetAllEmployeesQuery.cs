@@ -13,9 +13,9 @@ namespace CQRS_Api.Features.Employees.Queries
     {
     }*/
 
-    public class GetAllEmployeesQuery : IRequest<IEnumerable<Employee>>
+    public class GetAllEmployeesQuery : IRequest<IEnumerable<EmployeeQueryModel>>
     {
-        public class GetAllEmployeesQueryHandler : IRequestHandler<GetAllEmployeesQuery, IEnumerable<Employee>>
+        public class GetAllEmployeesQueryHandler : IRequestHandler<GetAllEmployeesQuery, IEnumerable<EmployeeQueryModel>>
         {
             private readonly IEmployeeService _employeeService;
 
@@ -24,7 +24,7 @@ namespace CQRS_Api.Features.Employees.Queries
                 _employeeService = employeesService;
             }
 
-            public async Task<IEnumerable<Employee>> Handle(GetAllEmployeesQuery query, CancellationToken cancellationToken)
+            public async Task<IEnumerable<EmployeeQueryModel>> Handle(GetAllEmployeesQuery query, CancellationToken cancellationToken)
             {
                 return await _employeeService.GetEmployeeList();
             }

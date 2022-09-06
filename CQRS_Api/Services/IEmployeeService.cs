@@ -6,10 +6,10 @@ namespace CQRS_Api.Services
 {
     public interface IEmployeeService
     {
-        Task<Employee> CreateEmployee(Employee employee);
-        Task<int> DeleteEmployee(Employee player);
-        Task<int> UpdateEmployee(Employee employee);
-        Task<Employee> GetEmployeeById(int id);
-        Task<IEnumerable<Employee>> GetEmployeeList();
+        Task<Employee> CreateEmployee(EmployeeCommandModel employee);
+        Task<int> DeleteEmployee(int empId);
+        Task<int> UpdateEmployee(EmployeeCommandModel employee);
+        Task<EmployeeQueryModel> GetEmployeeById(int id);
+        Task<IEnumerable<EmployeeQueryModel>> GetEmployeeList();
     }
 }

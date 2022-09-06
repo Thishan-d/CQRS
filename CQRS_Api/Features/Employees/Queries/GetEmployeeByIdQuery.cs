@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace CQRS_Api.Features.Employees.Queries
 {
-    public class GetEmployeeByIdQuery : IRequest<Employee>
+    public class GetEmployeeByIdQuery : IRequest<EmployeeQueryModel>
     {
         public int EmpId { get; set; }
         public GetEmployeeByIdQuery(int empId)
         {
             this.EmpId = empId;
         }
-        public class GetEmployeeByIdQueryHandler : IRequestHandler<GetEmployeeByIdQuery, Employee>
+        public class GetEmployeeByIdQueryHandler : IRequestHandler<GetEmployeeByIdQuery, EmployeeQueryModel>
         {
             private readonly IEmployeeService _employeeService;
 
@@ -25,7 +25,7 @@ namespace CQRS_Api.Features.Employees.Queries
                 _employeeService = employeesService;
             }
 
-            public async Task<Employee> Handle(GetEmployeeByIdQuery query, CancellationToken cancellationToken)
+            public async Task<EmployeeQueryModel> Handle(GetEmployeeByIdQuery query, CancellationToken cancellationToken)
             {
                 return await _employeeService.GetEmployeeById(query.EmpId);
             }

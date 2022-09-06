@@ -10,10 +10,12 @@ namespace CQRS_Api.Features.Employees.Commands
     {
         public string EmpName { get; set; }
         public int EmpAge { get; set; }
+        public int EmpSalary { get; set; }
         public CreateEmployeeCommand(Employee employee)
         {
             this.EmpName = employee.EmpName;
             this.EmpAge = employee.EmpAge;
+            this.EmpSalary = employee.EmpSalary;
         }
         public class CreateEmployeeCommandHandler : IRequestHandler<CreateEmployeeCommand, Employee>
         {
@@ -24,10 +26,11 @@ namespace CQRS_Api.Features.Employees.Commands
             }
             public async Task<Employee> Handle(CreateEmployeeCommand request, CancellationToken cancellationToken)
             {
-                Employee employee = new Employee()
+                EmployeeCommandModel employee = new EmployeeCommandModel()
                 {
                     EmpName = request.EmpName,
-                    EmpAge = request.EmpAge
+                    EmpAge = request.EmpAge,
+                    EmpSalary = request.EmpSalary
                 };
 
                return await _employeeService.CreateEmployee(employee);

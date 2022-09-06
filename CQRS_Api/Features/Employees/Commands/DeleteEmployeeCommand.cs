@@ -1,4 +1,5 @@
-﻿using CQRS_Api.Services;
+﻿using CQRS_Api.Models;
+using CQRS_Api.Services;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -27,11 +28,7 @@ namespace CQRS_Api.Features.Employees.Commands
             }
             public async Task<int> Handle(DeleteEmployeeCommand request, CancellationToken cancellationToken)
             {
-                var employee = await _employeeService.GetEmployeeById(request.EmpId);
-                if (employee == null)
-                    return default;
-
-                return await _employeeService.DeleteEmployee(employee);
+                return await _employeeService.DeleteEmployee(request.EmpId);
             }
         }
     }

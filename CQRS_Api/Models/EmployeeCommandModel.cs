@@ -1,22 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace CQRS_Api.Models
 {
-    public class Employee
+    public class EmployeeCommandModel
     {
-        [Key]
         public int EmpId { get; set; }
         public string EmpName { get; set; }
         public int EmpAge { get; set; }
-
-        //only for Query
-        public int CustomerCount { get; set; }
-
-        //Only for Command
+        //Suppose we use Emp salary only for create and update. Not for read
         public int EmpSalary { get; set; }
     }
 }

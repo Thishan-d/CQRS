@@ -15,33 +15,62 @@ namespace CQRS_Api.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Employee>> GetEmployeeList()
+        public async Task<IEnumerable<EmployeeQueryModel>> GetEmployeeList()
         {
-            return await _context.Employees.ToListAsync();
+            List<Employee> result = await _context.Employees.ToListAsync();
+            List<EmployeeQueryModel> empQ = new List<EmployeeQueryModel>();
+            EmployeeQueryModel employee = new EmployeeQueryModel();
+            if(result!=null)
+            {
+                foreach (var emp in result)
+                {
+                    employee.EmpName = emp.EmpName;
+                    employee.EmpAge = emp.EmpAge;
+                    employee.CustomerCount = emp.CustomerCount;
+                    employee.EmpId = emp.EmpId;
+                    empQ.Add(employee);
+                }
+            }
+            return empQ;
         }
 
-        public async Task<Employee> GetEmployeeById(int id)
+        public async Task<EmployeeQueryModel> GetEmployeeById(int id)
         {
-            return await _context.Employees
-                .FirstOrDefaultAsync(x => x.EmpId == id);
-        }
-
-        public async Task<Employee> CreateEmployee(Employee employee)
-        {
-            _context.Employees.Add(employee);
-            await _context.SaveChangesAsync();
+            var result = await _context.Employees.FirstOrDefaultAsync(x => x.EmpId == id);
+            EmployeeQueryModel employee = new EmployeeQueryModel();
+            employee.EmpName = result.EmpName;
+            employee.EmpAge = result.EmpAge;
+            employee.CustomerCount = result.CustomerCount;
+            employee.EmpId = result.EmpId;
             return employee;
         }
 
-        public async Task<int> UpdateEmployee(Employee employee)
+        public async Task<Employee> CreateEmployee(EmployeeCommandModel employee)
         {
-            _context.Employees.Update(employee);
+            Employee emp = new Employee();
+            emp.EmpAge = employee.EmpAge;
+            emp.EmpName = employee.EmpName;
+            emp.EmpSalary = employee.EmpSalary;
+            var result = _context.Employees.Add(emp);
+            await _context.SaveChangesAsync();
+
+            return emp;
+        }
+
+        public async Task<int> UpdateEmployee(EmployeeCommandModel employee)
+        {
+            var tempEmp = await _context.Employees.FirstOrDefaultAsync(x => x.EmpId == employee.EmpId);
+            tempEmp.EmpSalary= employee.EmpSalary;
+            tempEmp.EmpName = employee.EmpName;
+            tempEmp.EmpAge = employee.EmpAge;
+            _context.Employees.Update(tempEmp);
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<int> DeleteEmployee(Employee player)
+        public async Task<int> DeleteEmployee(int employeeId)
         {
-            _context.Employees.Remove(player);
+            var employee = await _context.Employees.FindAsync(employeeId);
+            _context.Remove(employee);
             return await _context.SaveChangesAsync();
         }
 
