@@ -19,11 +19,11 @@ namespace CQRS_Api.Services
         {
             List<Employee> result = await _context.Employees.ToListAsync();
             List<EmployeeQueryModel> empQ = new List<EmployeeQueryModel>();
-            EmployeeQueryModel employee = new EmployeeQueryModel();
             if(result!=null)
             {
                 foreach (var emp in result)
                 {
+                    EmployeeQueryModel employee = new EmployeeQueryModel();
                     employee.EmpName = emp.EmpName;
                     employee.EmpAge = emp.EmpAge;
                     employee.CustomerCount = emp.CustomerCount;
@@ -37,6 +37,8 @@ namespace CQRS_Api.Services
         public async Task<EmployeeQueryModel> GetEmployeeById(int id)
         {
             var result = await _context.Employees.FirstOrDefaultAsync(x => x.EmpId == id);
+            if (result == null) return default;
+
             EmployeeQueryModel employee = new EmployeeQueryModel();
             employee.EmpName = result.EmpName;
             employee.EmpAge = result.EmpAge;
