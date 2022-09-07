@@ -34,13 +34,13 @@ namespace CQRS_Api.Controllers
         }
 
         [HttpPost]
-        public async Task<Employee> CreateEmployee([FromBody] Employee employee)
+        public async Task<Employee> CreateEmployee([FromBody] EmployeeCommandModel employee)
         {
             return await _mediator.Send(new CreateEmployeeCommand(employee));
         }
 
         [HttpPut]
-        public async Task<int> UpdateEmployee([FromBody] Employee employee)
+        public async Task<int> UpdateEmployee([FromBody] EmployeeCommandModel employee)
         {
             return await _mediator.Send(new UpdateEmployeeCommand(employee));
         }
