@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\thdharmakeerthi\\Desktop\\CQRS\\CQRS_Api\\CQRS_Api\\CQRS_Api.csproj": {}
+    "D:\\Assignments\\CQRS training\\CQRS\\CQRS_Api\\CQRS_Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\thdharmakeerthi\\Desktop\\CQRS\\CQRS_Api\\CQRS_Api\\CQRS_Api.csproj": {
+    "D:\\Assignments\\CQRS training\\CQRS\\CQRS_Api\\CQRS_Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\thdharmakeerthi\\Desktop\\CQRS\\CQRS_Api\\CQRS_Api\\CQRS_Api.csproj",
+        "projectUniqueName": "D:\\Assignments\\CQRS training\\CQRS\\CQRS_Api\\CQRS_Api.csproj",
         "projectName": "CQRS_Api",
-        "projectPath": "C:\\Users\\thdharmakeerthi\\Desktop\\CQRS\\CQRS_Api\\CQRS_Api\\CQRS_Api.csproj",
+        "projectPath": "D:\\Assignments\\CQRS training\\CQRS\\CQRS_Api\\CQRS_Api.csproj",
         "packagesPath": "C:\\Users\\thdharmakeerthi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\thdharmakeerthi\\Desktop\\CQRS\\CQRS_Api\\CQRS_Api\\obj\\",
+        "outputPath": "D:\\Assignments\\CQRS training\\CQRS\\CQRS_Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\thdharmakeerthi\\AppData\\Roaming\\NuGet\\NuGet.Config",

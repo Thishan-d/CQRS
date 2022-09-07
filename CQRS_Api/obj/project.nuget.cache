@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yWbwGvRCva3iRvmm/7VmMrkXWJQBIqkeozoJC/i6sh8+DkOjXWSuyVf6nnSIamceddEIg42wJbHPrPOX2ISlcA==",
+  "dgSpecHash": "Wb8aUZcLoMu3+7Xt3s1Cusb+5VOekiPgvCaKvyTwEP01JFBycCLf/o2FVZHeLyDiBjPNrYnYwkRhWBiBaz9ngQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\thdharmakeerthi\\Desktop\\CQRS\\CQRS_Api\\CQRS_Api\\CQRS_Api.csproj",
+  "projectFilePath": "D:\\Assignments\\CQRS training\\CQRS\\CQRS_Api\\CQRS_Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thdharmakeerthi\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\thdharmakeerthi\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",

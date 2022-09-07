@@ -11,7 +11,7 @@ namespace CQRS_Api.Features.Employees.Commands
         public string EmpName { get; set; }
         public int EmpAge { get; set; }
         public int EmpSalary { get; set; }
-        public CreateEmployeeCommand(Employee employee)
+        public CreateEmployeeCommand(EmployeeCommandModel employee)
         {
             this.EmpName = employee.EmpName;
             this.EmpAge = employee.EmpAge;
