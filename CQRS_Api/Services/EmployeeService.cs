@@ -26,7 +26,6 @@ namespace CQRS_Api.Services
                     EmployeeQueryModel employee = new EmployeeQueryModel();
                     employee.EmpName = emp.EmpName;
                     employee.EmpAge = emp.EmpAge;
-                    employee.CustomerCount = emp.CustomerCount;
                     employee.EmpId = emp.EmpId;
                     empQ.Add(employee);
                 }
@@ -42,7 +41,6 @@ namespace CQRS_Api.Services
             EmployeeQueryModel employee = new EmployeeQueryModel();
             employee.EmpName = result.EmpName;
             employee.EmpAge = result.EmpAge;
-            employee.CustomerCount = result.CustomerCount;
             employee.EmpId = result.EmpId;
             return employee;
         }
@@ -52,7 +50,7 @@ namespace CQRS_Api.Services
             Employee emp = new Employee();
             emp.EmpAge = employee.EmpAge;
             emp.EmpName = employee.EmpName;
-            emp.EmpSalary = employee.EmpSalary;
+            emp.EmpSalary = employee._empSalary;
             var result = _context.Employees.Add(emp);
             await _context.SaveChangesAsync();
 
@@ -62,7 +60,7 @@ namespace CQRS_Api.Services
         public async Task<int> UpdateEmployee(EmployeeCommandModel employee)
         {
             var tempEmp = await _context.Employees.FirstOrDefaultAsync(x => x.EmpId == employee.EmpId);
-            tempEmp.EmpSalary= employee.EmpSalary;
+            tempEmp.EmpSalary= employee._empSalary;
             tempEmp.EmpName = employee.EmpName;
             tempEmp.EmpAge = employee.EmpAge;
             _context.Employees.Update(tempEmp);
@@ -72,6 +70,7 @@ namespace CQRS_Api.Services
         public async Task<int> DeleteEmployee(int employeeId)
         {
             var employee = await _context.Employees.FindAsync(employeeId);
+            if(employee!=null)
             _context.Remove(employee);
             return await _context.SaveChangesAsync();
         }
