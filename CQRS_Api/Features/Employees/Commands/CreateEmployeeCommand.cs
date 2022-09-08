@@ -15,7 +15,7 @@ namespace CQRS_Api.Features.Employees.Commands
         {
             this.EmpName = employee.EmpName;
             this.EmpAge = employee.EmpAge;
-            this.EmpSalary = employee.EmpSalary;
+            this.EmpSalary = employee._empSalary;
         }
         public class CreateEmployeeCommandHandler : IRequestHandler<CreateEmployeeCommand, Employee>
         {
@@ -30,7 +30,7 @@ namespace CQRS_Api.Features.Employees.Commands
                 {
                     EmpName = request.EmpName,
                     EmpAge = request.EmpAge,
-                    EmpSalary = request.EmpSalary
+                    _empSalary = request.EmpSalary
                 };
 
                return await _employeeService.CreateEmployee(employee);

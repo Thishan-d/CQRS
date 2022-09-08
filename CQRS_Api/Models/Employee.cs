@@ -13,9 +13,6 @@ namespace CQRS_Api.Models
         public string EmpName { get; set; }
         public int EmpAge { get; set; }
 
-        //only for Query
-        public int CustomerCount { get; set; }
-
         //Only for Command
         public int EmpSalary { get; set; }
     }
