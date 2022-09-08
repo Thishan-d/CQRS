@@ -24,9 +24,10 @@ namespace CQRS_Api.Services
                 foreach (var emp in result)
                 {
                     EmployeeQueryModel employee = new EmployeeQueryModel();
-                    employee.EmpName = emp.EmpName;
+                    employee.EmpFirstName = emp.EmpFirstName;
                     employee.EmpAge = emp.EmpAge;
                     employee.EmpId = emp.EmpId;
+                    employee.EmpSalary = emp.EmpSalary;
                     empQ.Add(employee);
                 }
             }
@@ -39,7 +40,7 @@ namespace CQRS_Api.Services
             if (result == null) return default;
 
             EmployeeQueryModel employee = new EmployeeQueryModel();
-            employee.EmpName = result.EmpName;
+            employee.EmpFirstName = result.EmpFirstName;
             employee.EmpAge = result.EmpAge;
             employee.EmpId = result.EmpId;
             return employee;
@@ -49,7 +50,8 @@ namespace CQRS_Api.Services
         {
             Employee emp = new Employee();
             emp.EmpAge = employee.EmpAge;
-            emp.EmpName = employee.EmpName;
+            emp.EmpFirstName = employee.EmpFirstName;
+            emp.EmpLastName = employee.EmpLastName;
             emp.EmpSalary = employee._empSalary;
             var result = _context.Employees.Add(emp);
             await _context.SaveChangesAsync();
@@ -61,8 +63,8 @@ namespace CQRS_Api.Services
         {
             var tempEmp = await _context.Employees.FirstOrDefaultAsync(x => x.EmpId == employee.EmpId);
             tempEmp.EmpSalary= employee._empSalary;
-            tempEmp.EmpName = employee.EmpName;
-            tempEmp.EmpAge = employee.EmpAge;
+            tempEmp.EmpFirstName = employee.EmpFirstName;
+            tempEmp.EmpLastName = employee.EmpLastName;
             _context.Employees.Update(tempEmp);
             return await _context.SaveChangesAsync();
         }

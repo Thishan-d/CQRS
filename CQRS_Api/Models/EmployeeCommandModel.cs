@@ -8,7 +8,8 @@ namespace CQRS_Api.Models
     public class EmployeeCommandModel
     {
         public int EmpId { get; set; }
-        public string EmpName { get; set; }
+        public string EmpFirstName { get; set; }
+        public string EmpLastName { get; set; }
         public int EmpAge { get; set; }
         //Suppose we use Emp salary only for create and update. Not for read
         private int EmpSalary { get; set; }

@@ -12,13 +12,15 @@ namespace CQRS_Api.Features.Employees.Commands
     public class UpdateEmployeeCommand : IRequest<int>
     {
         public int EmpId { get; set; }
-        public string EmpName { get; set; }
+        public string EmpFirstName { get; set; }
+        public string EmpLastName { get; set; }
         public int EmpAge { get; set; }
         public int EmpSalary { get; set; }
 
         public UpdateEmployeeCommand(EmployeeCommandModel employee)
         {
-            this.EmpName = employee.EmpName;
+            this.EmpFirstName = employee.EmpFirstName;
+            this.EmpLastName= employee.EmpLastName;
             this.EmpAge = employee.EmpAge;
             this.EmpId = employee.EmpId;
             this.EmpSalary = employee._empSalary;
@@ -35,7 +37,8 @@ namespace CQRS_Api.Features.Employees.Commands
                 var employee = new EmployeeCommandModel();
 
                 employee.EmpAge = request.EmpAge;
-                employee.EmpName = request.EmpName;
+                employee.EmpFirstName = request.EmpFirstName;
+                employee.EmpLastName = request.EmpLastName;
                 employee._empSalary = request.EmpSalary;
                 employee.EmpId = request.EmpId;
 
