@@ -8,12 +8,14 @@ namespace CQRS_Api.Features.Employees.Commands
 {
     public class CreateEmployeeCommand : IRequest<Employee>
     {
-        public string EmpName { get; set; }
+        public string EmpFirstName { get; set; }
+        public string EmpLastName { get; set; }
         public int EmpAge { get; set; }
         public int EmpSalary { get; set; }
         public CreateEmployeeCommand(EmployeeCommandModel employee)
         {
-            this.EmpName = employee.EmpName;
+            this.EmpFirstName = employee.EmpFirstName;
+            this.EmpLastName = employee.EmpLastName;
             this.EmpAge = employee.EmpAge;
             this.EmpSalary = employee._empSalary;
         }
@@ -28,7 +30,8 @@ namespace CQRS_Api.Features.Employees.Commands
             {
                 EmployeeCommandModel employee = new EmployeeCommandModel()
                 {
-                    EmpName = request.EmpName,
+                    EmpFirstName = request.EmpFirstName,
+                    EmpLastName = request.EmpLastName,
                     EmpAge = request.EmpAge,
                     _empSalary = request.EmpSalary
                 };

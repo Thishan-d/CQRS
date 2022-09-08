@@ -10,7 +10,8 @@ namespace CQRS_Api.Models
     {
         [Key]
         public int EmpId { get; set; }
-        public string EmpName { get; set; }
+        public string EmpFirstName { get; set; }
+        public string EmpLastName { get; set; }
         public int EmpAge { get; set; }
 
         //Only for Command
